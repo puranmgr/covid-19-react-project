@@ -3,7 +3,11 @@ import Axios from "axios";
 import "./style.css";
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
 
+        this.getCountryData = this.getCountryData.bind(this);
+    }
     state = {
         confirmed: 0,
         recovered: 0,
@@ -27,6 +31,16 @@ export default class App extends React.Component {
         })
     }
 
+    async getCountryData(e) {
+        const res = await Axios.get(`https://covid19.mathdro.id/api/countries/${e.target.value}`);
+        this.setState({
+            confirmed: res.data.confirmed.value,
+            recovered: res.data.recovered.value,
+            deaths: res.data.deaths.value,
+
+        })
+    }
+
     renderCountryChoices() {
         return this.state.countries.map((country, i) => {
             return <option key={i}>{country}</option>
@@ -38,7 +52,7 @@ export default class App extends React.Component {
             <div className="container">
                 <h1>Coronavirus live update</h1>
 
-                <select>
+                <select onChange={this.getCountryData}>
                     {this.renderCountryChoices()
                     }}
                 </select>
