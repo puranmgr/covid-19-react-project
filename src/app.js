@@ -7,7 +7,8 @@ export default class App extends React.Component {
     state = {
         confirmed: 0,
         recovered: 0,
-        deaths: 0
+        deaths: 0,
+        countries: []
     }
 
     componentDidMount() {
@@ -15,18 +16,32 @@ export default class App extends React.Component {
     }
 
     async getData() {
-        const res = await Axios.get("https://covid19.mathdro.id/api");
+        const resApi = await Axios.get("https://covid19.mathdro.id/api");
+        const resCountries = await Axios.get("https://covid19.mathdro.id/api/countries")
+        const countries = Object.keys(resCountries.data.countries);
         this.setState({
-            confirmed: res.data.confirmed.value,
-            recovered: res.data.recovered.value,
-            deaths: res.data.deaths.value
+            confirmed: resApi.data.confirmed.value,
+            recovered: resApi.data.recovered.value,
+            deaths: resApi.data.deaths.value,
+            countries
         })
+    }
+
+    renderCountryChoices() {
+        return this.state.countries.map((country, i) => {
+            return <option key={i}>{country}</option>
+        });
     }
 
     render() {
         return (
             <div className="container">
                 <h1>Coronavirus live update</h1>
+
+                <select>
+                    {this.renderCountryChoices()
+                    }}
+                </select>
 
                 <div className="flex">
                     <div className="box confirmed">
