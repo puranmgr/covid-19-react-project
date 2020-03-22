@@ -30,7 +30,7 @@ export default class App extends React.Component {
 
                 <div className="flex">
                     <div className="box confirmed">
-                        <h3>Total confirmed cases</h3>
+                        <h3>Confirmed</h3>
                         <h4>{this.state.confirmed}</h4>
                     </div>
                     <div className="box recovered">
