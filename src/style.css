@@ -19,7 +19,7 @@
 
 .box {
     margin: 1em;
-    min-width: 100%;
+    width: 100%;
     padding: 0.5em;
     border-radius: 8px;
     font-size: 1.5em;
@@ -41,5 +41,11 @@
     padding: 0.5em;
     border: 1px solid #f8351f;
     background: #ee4613;
+}
+
+@media screen and (min-width: 800px){
+    .flex{
+        flex-wrap: nowrap;
+    }
 }
 
