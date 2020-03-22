@@ -1,5 +1,6 @@
 import React from "react";
 import Axios from "axios";
+import "./style.css";
 
 export default class App extends React.Component {
 
@@ -26,17 +27,20 @@ export default class App extends React.Component {
         return (
             <div className="container">
                 <h1>Coronavirus live update</h1>
-                <div className="box">
-                    <h3>Total cases confirmed</h3>
-                    <h4>{this.state.confirmed}</h4>
-                </div>
-                <div className="box">
-                    <h3>Recovered</h3>
-                    <h4>{this.state.recovered}</h4>
-                </div>
-                <div className="box">
-                    <h3>Deaths</h3>
-                    <h4>{this.state.deaths}</h4>
+
+                <div className="flex">
+                    <div className="box confirmed">
+                        <h3>Total confirmed cases</h3>
+                        <h4>{this.state.confirmed}</h4>
+                    </div>
+                    <div className="box recovered">
+                        <h3>Recovered</h3>
+                        <h4>{this.state.recovered}</h4>
+                    </div>
+                    <div className="box deaths">
+                        <h3>Deaths</h3>
+                        <h4>{this.state.deaths}</h4>
+                    </div>
                 </div>
             </div>
         );

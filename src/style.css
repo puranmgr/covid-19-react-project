@@ -1,0 +1,45 @@
+*{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.container { 
+    padding: 1em;
+    width: 100%;
+    text-align: center;   
+}
+
+.flex {
+    display: flex; 
+    justify-content: space-evenly;
+    flex-wrap: wrap; 
+}
+
+.box {
+    margin: 1em;
+    min-width: 100%;
+    padding: 0.5em;
+    border-radius: 8px;
+    font-size: 1.5em;
+}
+
+.box.confirmed { 
+    padding: 0.5em;
+    border: 1px solid #fce918;
+    background: #f7c914;
+}
+
+.box.recovered { 
+    padding: 0.5em;
+    border: 1px solid #4fe00b;
+    background: #26df15;
+}
+
+.box.deaths { 
+    padding: 0.5em;
+    border: 1px solid #f8351f;
+    background: #ee4613;
+}
+
