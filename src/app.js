@@ -5,7 +5,6 @@ import "./style.css";
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-
         this.getCountryData = this.getCountryData.bind(this);
     }
     state = {
@@ -32,13 +31,26 @@ export default class App extends React.Component {
     }
 
     async getCountryData(e) {
-        const res = await Axios.get(`https://covid19.mathdro.id/api/countries/${e.target.value}`);
-        this.setState({
-            confirmed: res.data.confirmed.value,
-            recovered: res.data.recovered.value,
-            deaths: res.data.deaths.value,
+        try {
+            const res = await Axios.get(`https://covid19.mathdro.id/api/countries/${e.target.value}`);
+            this.setState({
+                confirmed: res.data.confirmed.value,
+                recovered: res.data.recovered.value,
+                deaths: res.data.deaths.value,
 
-        })
+            });
+        }
+        catch (err) {
+            // show no data if the user selects countries with no corona virus cases 
+            if (err.response.status === 404) {
+                this.setState({
+                    confirmed: "No data available",
+                    recovered: "No data available",
+                    deaths: "No data available",
+
+                });
+            }
+        }
     }
 
     renderCountryChoices() {
