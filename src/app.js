@@ -31,6 +31,10 @@ export default class App extends React.Component {
     }
 
     async getCountryData(e) {
+        // selecting the worldwide option by default 
+        if (e.target.value === "Worldwide") {
+            return this.getData();
+        }
         try {
             const res = await Axios.get(`https://covid19.mathdro.id/api/countries/${e.target.value}`);
             this.setState({
@@ -65,6 +69,7 @@ export default class App extends React.Component {
                 <h1>Coronavirus live update</h1>
 
                 <select onChange={this.getCountryData}>
+                    <option>Worldwide</option>
                     {this.renderCountryChoices()
                     }}
                 </select>
