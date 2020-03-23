@@ -66,7 +66,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div className="container">
-                <h1>Coronavirus live update</h1>
+                <h1>Covid-19 live update</h1>
 
                 <select className="dropdown" onChange={this.getCountryData}>
                     <option>Worldwide</option>
